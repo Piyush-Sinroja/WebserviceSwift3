@@ -75,3 +75,22 @@ extension UIViewController {
     }
     
 }
+
+extension UIView {
+    func showLoadingHUDWithText (text: String) {
+        if Constant.HUD.superview == nil {
+            self.addSubview(Constant.HUD)
+            Constant.HUD.center = self.center
+            Constant.HUD.label.text = text
+            Constant.HUD.show(animated: true)
+        } else {
+            print("HUD is nil")
+        }
+    }
+    func hideLoadingHUD() {
+        DispatchQueue.main.async {
+            Constant.HUD.hide(animated: true)
+            Constant.HUD.removeFromSuperview()
+        }
+    }
+}
