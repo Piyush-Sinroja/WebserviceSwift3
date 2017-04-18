@@ -8,7 +8,7 @@ class Constant: NSObject {
     static let InternetConnectionProblem : String = "Please check your internet connection."
     static let CommonAlert : String = "Oops!! Something went wrong. Please try again later."
     
-    static var HUD : MBProgressHUD!
+    static var HUD : MBProgressHUD()
     
     static let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
