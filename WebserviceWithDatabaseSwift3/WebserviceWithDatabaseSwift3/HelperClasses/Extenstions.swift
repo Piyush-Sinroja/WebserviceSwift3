@@ -23,7 +23,7 @@ extension String {
     
     func isEmptyString() -> Bool {
         
-        if self.trimmingCharacters(in: CharacterSet.whitespaces).characters.count == 0{
+        if self.trimmingCharacters(in: CharacterSet.whitespaces).count == 0{
             return true
         }
         return false
@@ -47,7 +47,7 @@ extension UIViewController {
     func showInternetAlert(){
         
         let alertController = UIAlertController(title: "App Name", message: "There is no internet connection.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+        let okAction = UIAlertAction(title: "OK", style: .default) {
             UIAlertAction in
             print("OK Pressed")
         }
@@ -67,10 +67,8 @@ extension UIViewController {
     
     func hideHud() {
         DispatchQueue.main.async(execute: {() -> Void in
-            if Constant.HUD != nil {
-                Constant.HUD.hide(animated: true)
-                Constant.HUD.removeFromSuperview()
-            }
+            Constant.HUD.hide(animated: true)
+            Constant.HUD.removeFromSuperview()
         })
     }
     

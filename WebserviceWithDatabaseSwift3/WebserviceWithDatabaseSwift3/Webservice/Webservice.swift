@@ -81,7 +81,7 @@ class Webservice: NSObject {
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
-                print("responseString = \(responseString)")
+                print("responseString = \(String(describing: responseString))")
                 if let httpResponse : HTTPURLResponse = response as? HTTPURLResponse {
                     
                     print(httpResponse)
@@ -157,7 +157,7 @@ class Webservice: NSObject {
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
-                print("responseString = \(responseString)")
+                print("responseString = \(String(describing: responseString))")
                 if let httpResponse : HTTPURLResponse = response as? HTTPURLResponse {
                     print(httpResponse)
                 }
@@ -233,7 +233,7 @@ class Webservice: NSObject {
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
-                print("responseString = \(responseString)")
+                print("responseString = \(String(describing: responseString))")
                 if let httpResponse : HTTPURLResponse = response as? HTTPURLResponse {
                     
                     print(httpResponse)
@@ -310,7 +310,7 @@ class Webservice: NSObject {
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
-                print("responseString = \(responseString)")
+                print("responseString = \(String(describing: responseString))")
                 if let httpResponse : HTTPURLResponse = response as? HTTPURLResponse {
                     
                     print(httpResponse)
@@ -420,7 +420,7 @@ class Webservice: NSObject {
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
-                print("responseString = \(responseString)")
+                print("responseString = \(String(describing: responseString))")
                 if let httpResponse : HTTPURLResponse = response as? HTTPURLResponse {
                     print(httpResponse)
                     
@@ -508,7 +508,7 @@ class Webservice: NSObject {
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
-                print("responseString = \(responseString)")
+                print("responseString = \(String(describing: responseString))")
                 if let httpResponse : HTTPURLResponse = response as? HTTPURLResponse {
                     
                     print(httpResponse)
@@ -637,7 +637,7 @@ class Webservice: NSObject {
             
             for i in 0 ..< aryImage.count{
                 
-                let data = UIImageJPEGRepresentation(aryImage[i] as! UIImage,1)
+                let data = (aryImage[i] as! UIImage).jpegData(compressionQuality:  1)
                 let mimeType = "png"
                 
                 // You can change name image.jpg

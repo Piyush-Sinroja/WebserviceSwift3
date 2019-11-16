@@ -4,39 +4,39 @@
 
 import UIKit
 class CheckReqServiceVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // How To Call PowerWebservice Methods
-    
+        
         //(1) Simple Get Webservice
-           //  callGETWebservice()
+          callGETWebservice()
         
         //(1) Simple POST Webservice
-           //  callPOSTWebservice()
+        //  callPOSTWebservice()
         
         //(1) Simple callPOSTWithImageWebservice Webservice
-           //  callPOSTWithImageWebservice()
+        //  callPOSTWithImageWebservice()
         
         //(1) Simple callPOSTWithFileWebservice Webservice
-             callPOSTWithFileWebservice()
+        /// callPOSTWithFileWebservice()
         
     }
-
+    
     func callGETWebservice() {
         //RequestForGet Method
         let checkInternet = Constant.reachabilityCheck()
         if checkInternet == true
         {
-           // Constant.showLoadingHUD(ViewController: self)
-        
+            // Constant.showLoadingHUD(ViewController: self)
+            
             Constant.showHUD(ViewController: self)
             
             let url : String = "API"
             let webServiceobj = PowerWebservice()
             webServiceobj.delegate = self
-            webServiceobj.requestGet_service(strUrl: url, apiIdentifier: "simpleGetRequest")
+            webServiceobj.requestGet_service(strUrl: url, apiIdentifier: "GETWebservice")
         }
         else {
             Constant.InternetConnection(ViewController: self)
@@ -50,14 +50,14 @@ class CheckReqServiceVC: UIViewController {
         {
             let webServiceobj = PowerWebservice()
             webServiceobj.delegate = self
-
+            
             let url : String = "API"
             
             let parameters : [String : String] = [
                 "key1"      :"",
                 "key2"      :"",
                 "key3"      :"",
-                ]
+            ]
             
             // Constant.showLoadingHUD(ViewController: self)
             
@@ -67,7 +67,7 @@ class CheckReqServiceVC: UIViewController {
             
         }
         else {
-             Constant.InternetConnection(ViewController: self)
+            Constant.InternetConnection(ViewController: self)
         }
     }
     
@@ -85,11 +85,11 @@ class CheckReqServiceVC: UIViewController {
                 "key1"      :"",
                 "key2"      :"",
                 "key3"      :"",
-                ]
+            ]
             
             let img : UIImage = UIImage(named: "newnature")!
             
-           // Constant.showLoadingHUD(ViewController: self)
+            // Constant.showLoadingHUD(ViewController: self)
             
             Constant.showHUD(ViewController: self)
             
@@ -97,7 +97,7 @@ class CheckReqServiceVC: UIViewController {
             
         }
         else {
-             Constant.InternetConnection(ViewController: self)
+            Constant.InternetConnection(ViewController: self)
         }
     }
     
@@ -117,9 +117,9 @@ class CheckReqServiceVC: UIViewController {
                 "password"      :"123456",
                 "confirmPassword"      :"123456",
                 "gender"      :"0",
-                ]
-        
-           // let file = Constant.getDocumentsURL().appendingPathComponent("")
+            ]
+            
+            // let file = Constant.getDocumentsURL().appendingPathComponent("")
             
             guard let filetext = Bundle.main.path(forResource: "PowerWebserviceinfo", ofType: "rtf") else {
                 return
@@ -127,11 +127,11 @@ class CheckReqServiceVC: UIViewController {
             
             Constant.showHUD(ViewController: self)
             
-           // Constant.showLoadingHUD(ViewController: self)
+            // Constant.showLoadingHUD(ViewController: self)
             webServiceobj.requestPostWithFile_service(strUrl: url, postData: parameters as NSDictionary, aryFilesKey: ["image"], aryFilesPath: [filetext], apiIdentifier: "POSTWithFileWebservice")
         }
         else {
-             Constant.InternetConnection(ViewController: self)
+            Constant.InternetConnection(ViewController: self)
         }
     }
     
@@ -152,7 +152,7 @@ extension CheckReqServiceVC : PowerWebserviceDelegate {
         print(response)
         
         if apiIdentifier == "GETWebservice" {
-        
+            
         }
         else if apiIdentifier == "POSTWebservice" {
             
@@ -187,7 +187,7 @@ extension CheckReqServiceVC : PowerWebserviceDelegate {
     }
     /// This is for Fail request or server give any error
     func powerWebserviceResponseError(error: Error?, apiIdentifier: String) {
-       // Constant.hideLoadingHUD()
+        // Constant.hideLoadingHUD()
         Constant.HideHud()
     }
     
